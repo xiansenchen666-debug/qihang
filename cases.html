@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卓越成就 | QIHANG 启航</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#191970',
+                        champagne: '#F7E7CE',
+                        offwhite: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdfbfb;
+            color: #1f2937;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .ambient-blob-1 {
+            position: absolute;
+            top: -20%; left: -10%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(25,25,112,0.04) 0%, rgba(25,25,112,0) 60%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float1 25s infinite ease-in-out alternate;
+        }
+        .ambient-blob-2 {
+            position: absolute;
+            bottom: -20%; right: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(247,231,206,0.3) 0%, rgba(247,231,206,0) 60%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float2 30s infinite ease-in-out alternate;
+        }
+
+        @keyframes float1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 10%) scale(1.1); }
+        }
+        @keyframes float2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10%, -5%) scale(1.15); }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        .btn-gold {
+            transition: all 0.3s ease;
+            border: 1px solid #F7E7CE;
+            color: #191970;
+            background: linear-gradient(to right, transparent 50%, #F7E7CE 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+        }
+        .btn-gold:hover {
+            background-position: right bottom;
+        }
+
+        .page-header-bg {
+            background-image: linear-gradient(rgba(249, 250, 251, 0.95), rgba(249, 250, 251, 0.8)),
+                              url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-sans">
+    
+    <div class="noise-overlay"></div>
+    <div class="ambient-bg">
+        <div class="ambient-blob-1"></div>
+        <div class="ambient-blob-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300 py-4 px-8 flex justify-between items-center" id="navbar">
+        <a href="index.html" class="text-midnight font-bold text-2xl tracking-widest uppercase flex items-center gap-2">
+            <i data-lucide="compass" class="text-champagne w-8 h-8"></i>
+            QIHANG
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-700">
+            <a href="index.html" class="hover:text-midnight transition-colors">首页</a>
+            <a href="cases.html" class="text-midnight border-b-2 border-champagne pb-1">卓越成就</a>
+            <a href="about.html" class="hover:text-midnight transition-colors">关于我们</a>
+        </div>
+        <a href="index.html#consult" class="px-6 py-2 btn-gold rounded-full font-medium text-sm hidden md:block">
+            免费咨询
+        </a>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-gray-200">
+        <div class="max-w-4xl mx-auto text-center reveal active">
+            <span class="text-champagne font-bold tracking-widest text-sm uppercase mb-4 block">Success Stories</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-midnight mb-6 leading-tight">数字背后的<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-midnight to-blue-600">家族跨越与学术荣耀</span></h1>
+            <p class="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+                启航每年仅为全球200组高净值家庭提供私行级别的“教育+身份”双核驱动咨询。以下是部分具有里程碑意义的真实案例。
+            </p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="py-24 px-6 max-w-7xl mx-auto relative z-10">
+        
+        <!-- Case 1 -->
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal flex flex-col md:flex-row gap-12 items-center bg-white/60">
+            <div class="md:w-1/3 relative">
+                <div class="w-32 h-32 bg-midnight text-champagne rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">HKU</div>
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="HKU Campus" class="rounded-2xl shadow-lg relative z-10">
+            </div>
+            <div class="md:w-2/3">
+                <span class="text-xs uppercase tracking-widest text-champagne font-bold border border-champagne px-3 py-1 rounded-full mb-6 inline-block">香港八大名校申请</span>
+                <h2 class="text-3xl font-bold text-midnight mb-4">从“双非”院校到香港大学金融硕士的全奖逆袭</h2>
+                <div class="mb-6 flex gap-4 text-sm text-gray-500">
+                    <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4"></i> Z同学</span>
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> 2023 Fall</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Z同学本科背景为普通双非财经院校，GPA仅有 3.2。启航的前招生官团队介入后，深度挖掘了其在本科期间参与的“普惠金融下沉市场调研”项目。通过重新构建 Personal Statement，将劣势转化为“扎根亚洲新兴市场的独特洞察力”。同时匹配了长达3个月的港大金融系教授全真模拟面试。最终不仅斩获 HKU 录取，更获得了半额奖学金。
+                </p>
+                <div class="flex items-center gap-4 border-t border-gray-200 pt-6">
+                    <div class="text-midnight font-bold">录取院校：</div>
+                    <div class="text-gray-600">香港大学 (QS 26) / 香港中文大学</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal delay-100 flex flex-col md:flex-row-reverse gap-12 items-center bg-white/60">
+            <div class="md:w-1/3 relative">
+                <div class="w-32 h-32 bg-champagne text-midnight rounded-full flex items-center justify-center font-bold text-2xl shadow-xl absolute -top-6 -right-6 z-20 text-center leading-tight">高才通<br/>A类</div>
+                <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hong Kong Skyline" class="rounded-2xl shadow-lg relative z-10">
+            </div>
+            <div class="md:w-2/3">
+                <span class="text-xs uppercase tracking-widest text-champagne font-bold border border-champagne px-3 py-1 rounded-full mb-6 inline-block">香港人才引进计划</span>
+                <h2 class="text-3xl font-bold text-midnight mb-4">企业主L总：3个月极速获批，实现企业出海与税务筹划双赢</h2>
+                <div class="mb-6 flex gap-4 text-sm text-gray-500">
+                    <span class="flex items-center gap-1"><i data-lucide="briefcase" class="w-4 h-4"></i> L总 (科技公司创始人)</span>
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 仅用时 90 天</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    L总国内企业年营收超千万，但由于复杂的股权结构，最初在自行申报时因“纳税证明不清晰”被入境处要求补件并面临拒签风险。启航的CPA团队与移民律师火速接手，重构了过去两年的个人所得税与企业分红的审计报告，精准踩中“高才通A类（年薪超250万港币）”的硬性门槛。在获批的同时，为其定制了VIE架构搭建建议，为后续企业在港交所IPO打下基石。
+                </p>
+                <div class="flex items-center gap-4 border-t border-gray-200 pt-6">
+                    <div class="text-midnight font-bold">核心价值：</div>
+                    <div class="text-gray-600">全家香港身份落户 / 华侨生联考资格储备 / 离岸税务优化</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] reveal delay-200 flex flex-col md:flex-row gap-12 items-center bg-white/60">
+            <div class="md:w-1/3 relative">
+                <div class="w-32 h-32 bg-midnight text-champagne rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">UM</div>
+                <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Malaysia Campus" class="rounded-2xl shadow-lg relative z-10">
+            </div>
+            <div class="md:w-2/3">
+                <span class="text-xs uppercase tracking-widest text-champagne font-bold border border-champagne px-3 py-1 rounded-full mb-6 inline-block">马来西亚双联课程与硕博</span>
+                <h2 class="text-3xl font-bold text-midnight mb-4">职场瓶颈期的学历破局：马来亚大学全奖博士录取</h2>
+                <div class="mb-6 flex gap-4 text-sm text-gray-500">
+                    <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4"></i> W女士 (外企中层)</span>
+                    <span class="flex items-center gap-1"><i data-lucide="target" class="w-4 h-4"></i> QS排名 65</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    35岁的W女士在跨国企业遭遇职业天花板，急需一个高含金量的博士学位作为晋升背书，但无法脱产离职。启航为其精准匹配了马来亚大学 (Universiti Malaya) 的高管博士(DBA)项目。通过长达半年的 Research Proposal (研究计划) 辅导，将她在企业的实战管理经验转化为高水准的学术课题，成功打动导师，实现“在职攻读+百强名校”的完美平衡。
+                </p>
+                <div class="flex items-center gap-4 border-t border-gray-200 pt-6">
+                    <div class="text-midnight font-bold">录取院校：</div>
+                    <div class="text-gray-600">马来亚大学 (Universiti Malaya) / 诺丁汉大学马来西亚校区</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-gray-400 text-xs border-t border-gray-200 mt-12">
+        <p>&copy; 2024 QIHANG 启航新未来咨询. All rights reserved. Minimalist Luxury Design.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+        revealElements.forEach(el => {
+            if(!el.classList.contains('active')) revealObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

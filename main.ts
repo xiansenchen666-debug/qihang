@@ -30,22 +30,28 @@ const SECURITY_HEADERS = new Headers({
 });
 
 /**
- * 处理静态文件请求 (index.html)
+ * 处理静态文件请求 (.html)
  */
 async function serveStaticFile(req: Request): Promise<Response> {
   const url = new URL(req.url);
   
-  // 仅在根路径返回 index.html
-  if (url.pathname === "/" || url.pathname === "/index.html") {
+  // 默认首页
+  let filePath = url.pathname;
+  if (filePath === "/" || filePath === "") {
+    filePath = "/index.html";
+  }
+
+  // 限制仅允许访问根目录下的 .html 文件，增强安全性
+  if (filePath.endsWith(".html") && !filePath.includes("..")) {
     try {
-      const file = await Deno.readFile("./index.html");
+      const file = await Deno.readFile("." + filePath);
       const headers = new Headers(SECURITY_HEADERS);
       headers.set("Content-Type", "text/html; charset=utf-8");
       
       return new Response(file, { status: 200, headers });
     } catch (e) {
-      console.error("Failed to read index.html:", e);
-      return new Response("Internal Server Error - Missing index.html", { status: 500 });
+      console.error(`Failed to read ${filePath}:`, e);
+      return new Response(`Internal Server Error - Missing ${filePath}`, { status: 404 });
     }
   }
 
