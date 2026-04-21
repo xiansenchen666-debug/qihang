@@ -66,6 +66,9 @@ async function serveStaticFile(req: Request): Promise<Response> {
   let filePath = url.pathname;
   if (filePath === "/" || filePath === "") {
     filePath = "/index.html";
+  } else if (!filePath.includes(".")) {
+    // 如果请求路径没有扩展名（如 /about），默认尝试查找对应的 .html 文件
+    filePath += ".html";
   }
 
   // 防止路径遍历攻击
