@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港核心业务 | QIHANG 启航</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0A0A0A',
+                        surface: '#141414',
+                        gold: '#D4AF37',
+                        goldlight: '#F3E5AB',
+                        offwhite: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #E5E7EB;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .ambient-blob-1 {
+            position: absolute;
+            top: -10%; left: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(10,10,10,0) 60%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float1 25s infinite ease-in-out alternate;
+        }
+        .ambient-blob-2 {
+            position: absolute;
+            bottom: -20%; right: -10%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(30,58,138,0.1) 0%, rgba(10,10,10,0) 60%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float2 30s infinite ease-in-out alternate;
+        }
+
+        @keyframes float1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 10%) scale(1.1); }
+        }
+        @keyframes float2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10%, -5%) scale(1.15); }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        .btn-gold {
+            transition: all 0.3s ease;
+            border: 1px solid #D4AF37;
+            color: #0A0A0A;
+            background: linear-gradient(to right, transparent 50%, #D4AF37 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+        .btn-gold:hover {
+            background-position: left bottom;
+            color: #D4AF37;
+        }
+
+        .page-header-bg {
+            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+                              url('https://images.unsplash.com/photo-1506158669146-619067262a00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-sans">
+    
+    <div class="noise-overlay"></div>
+    <div class="ambient-bg">
+        <div class="ambient-blob-1"></div>
+        <div class="ambient-blob-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4 px-8 flex justify-between items-center" id="navbar">
+        <a href="index.html" class="text-offwhite font-bold text-2xl tracking-widest uppercase flex items-center gap-2">
+            <i data-lucide="compass" class="text-gold w-8 h-8"></i>
+            QIHANG
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+            <a href="index.html" class="hover:text-gold transition-colors">首页</a>
+            <a href="hongkong.html" class="text-gold border-b-2 border-gold pb-1">香港业务</a>
+            <a href="cases.html" class="hover:text-gold transition-colors">卓越成就</a>
+            <a href="about.html" class="hover:text-gold transition-colors">关于我们</a>
+        </div>
+        <a href="index.html#consult" class="px-6 py-2 btn-gold rounded-full font-medium text-sm hidden md:block">
+            免费咨询
+        </a>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-white/10">
+        <div class="max-w-4xl mx-auto text-center reveal active">
+            <span class="text-gold font-bold tracking-widest text-sm uppercase mb-4 block">Hong Kong Core Services</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-offwhite mb-6 leading-tight">立足香港，<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldlight">链接全球核心资产与教育</span></h1>
+            <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+                依托持牌秘书公司资质与前入境处顾问资源，为您提供从公司架构搭建、财税审计，到专才优才落户、子女名校进阶的“一站式”闭环服务。
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-24 px-6 max-w-7xl mx-auto relative z-10">
+        
+        <!-- 秘书公司业务 -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-10 reveal">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-offwhite">持牌秘书公司业务 (企业出海)</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-8 rounded-3xl reveal group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">香港公司注册与开户</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        提供极速香港公司注册服务，配备专属商务秘书。专解复杂架构（如VIE架构），协助董事开立香港各大主流银行公司账户，保障跨境资金灵活调拨。
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> 1个工作日电子注册</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> 董事变更与SCR建册</li>
+                    </ul>
+                </div>
+                
+                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">审计、报税与合规</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        联合香港CPA注册会计师团队，提供年审、做账、零申报与核数服务。专业应对税务局抽查，规避离岸账户冻结风险，最大化享受香港低税率优势。
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> 利得税与薪俸税申报</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> CRS与FATCA合规审查</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">专才工作签证代办</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        （与秘书公司业务深度交叉）利用香港公司雇主资质，为内地高管及核心技术人员办理输入内地人才计划（专才）。合法合规获批香港身份。
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> 商业计划书代写</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold/50"></i> 薪酬架构合理化设计</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 身份规划业务 -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-10 reveal">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                    <i data-lucide="passport" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-offwhite">人才引进与身份规划</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-10 rounded-3xl reveal flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold text-offwhite mb-4">高端人才通行证 (高才通)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            面向全球百强大学毕业生及年收入超250万港币的高净值人群。启航专攻A类（高薪人士）疑难杂症，通过完备的税务与分红审计，将获批率提升至98%。最快4周全家获批。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">极速获批</span>
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">高净值专属</span>
+                    </div>
+                </div>
+
+                <div class="glass p-10 rounded-3xl reveal delay-100 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold text-offwhite mb-4">优秀人才入境计划 (优才)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            无须赴港前获得雇佣。启航资深文案团队深度挖掘客户在科技、金融、医疗等领域的成就，打造无懈可击的赴港计划书。并提供获批后的续签保本方案，助您顺利拿永居。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">名额放开</span>
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">低成本</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 留学与进修 -->
+        <div>
+            <div class="flex items-center gap-4 mb-10 reveal">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-offwhite">香港升学与进修移民</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-8 rounded-3xl reveal group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">进修移民 (IANG)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        大专及以上学历的首选。申请香港一年制硕士，毕业后无条件获发IANG签证。启航提供“选校-申请-面试-签证-租房-就业指导”全流程陪跑服务。
+                    </p>
+                </div>
+                
+                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">香港八大本科/硕博直录</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        港大、港中文、港科大等世界百强名校申请。涵盖文书精修、教授套磁及全真面试模拟，大幅提升双非院校背景及低GPA学生的逆袭几率。
+                    </p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-white/5 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-gold mb-4">DSE与华侨生联考规划</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        结合香港身份规划，为子女铺设升学捷径。通过香港DSE考试直通全球名校，或利用华侨生身份，400分低分冲击内地985/211双一流学府。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-gray-600 text-xs border-t border-white/5 mt-12 bg-black/50">
+        <p>&copy; 2024 QIHANG 启航新未来咨询. All rights reserved. Premium Dark Luxury Design.</p>
+    </footer>
+
+    <script>
+        // 已同步项目现有 CSS 变量：--obsidian, --surface, --gold, --goldlight, --offwhite
+        lucide.createIcons();
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+        revealElements.forEach(el => {
+            if(!el.classList.contains('active')) revealObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
