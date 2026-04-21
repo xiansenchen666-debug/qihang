@@ -13,11 +13,17 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#0A0A0A',
-                        surface: '#141414',
-                        gold: '#D4AF37',
-                        goldlight: '#F3E5AB',
-                        offwhite: '#F3F4F6'
+                        obsidian: '#FDFBF7',
+                        surface: '#FFFFFF',
+                        gold: '#C5A059',
+                        goldlight: '#E6D5B8',
+                        offwhite: '#2C241B',
+                        gray: {
+                            300: '#A39C93',
+                            400: '#8A8275',
+                            500: '#5C5448',
+                            600: '#453E34',
+                        }
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
@@ -29,8 +35,8 @@
 
     <style>
         body {
-            background-color: #0A0A0A;
-            color: #E5E7EB;
+            background-color: #FDFBF7;
+            color: #5C5448;
             overflow-x: hidden;
             position: relative;
         }
@@ -54,7 +60,7 @@
             position: absolute;
             top: -10%; left: -10%;
             width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(197,160,89,0.15) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float1 25s infinite ease-in-out alternate;
@@ -63,7 +69,7 @@
             position: absolute;
             bottom: -20%; right: -10%;
             width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(30,58,138,0.1) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(200,205,210,0.4) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float2 30s infinite ease-in-out alternate;
@@ -79,18 +85,18 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(44, 36, 27, 0.05);
         }
 
         .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
         .reveal {
@@ -108,19 +114,19 @@
 
         .btn-gold {
             transition: all 0.3s ease;
-            border: 1px solid #D4AF37;
-            color: #0A0A0A;
-            background: linear-gradient(to right, transparent 50%, #D4AF37 50%);
+            border: 1px solid #C5A059;
+            color: #C5A059;
+            background: linear-gradient(to right, transparent 50%, #C5A059 50%);
             background-size: 200% 100%;
             background-position: right bottom;
         }
         .btn-gold:hover {
             background-position: left bottom;
-            color: #D4AF37;
+            color: #FDFBF7;
         }
 
         .page-header-bg {
-            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+            background-image: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.95)),
                               url('https://images.unsplash.com/photo-1506158669146-619067262a00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
@@ -142,7 +148,7 @@
             <i data-lucide="compass" class="text-gold w-8 h-8"></i>
             QIHANG
         </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-500">
             <a href="index.html" class="hover:text-gold transition-colors">首页</a>
             <a href="hongkong.html" class="text-gold border-b-2 border-gold pb-1">香港业务</a>
             <a href="cases.html" class="hover:text-gold transition-colors">卓越成就</a>
@@ -154,11 +160,11 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-white/10">
+    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-gold/20">
         <div class="max-w-4xl mx-auto text-center reveal active">
             <span class="text-gold font-bold tracking-widest text-sm uppercase mb-4 block">Hong Kong Core Services</span>
             <h1 class="text-4xl md:text-6xl font-bold text-offwhite mb-6 leading-tight">立足香港，<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldlight">链接全球核心资产与教育</span></h1>
-            <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+            <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto">
                 依托持牌秘书公司资质与前入境处顾问资源，为您提供从公司架构搭建、财税审计，到专才优才落户、子女名校进阶的“一站式”闭环服务。
             </p>
         </div>
@@ -170,16 +176,16 @@
         <!-- 秘书公司业务 -->
         <div class="mb-20">
             <div class="flex items-center gap-4 mb-10 reveal">
-                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-gold/20 text-gold flex items-center justify-center">
                     <i data-lucide="building-2" class="w-6 h-6"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-offwhite">持牌秘书公司业务 (企业出海)</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass p-8 rounded-3xl reveal group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">香港公司注册与开户</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
                         提供极速香港公司注册服务，配备专属商务秘书。专解复杂架构（如VIE架构），协助董事开立香港各大主流银行公司账户，保障跨境资金灵活调拨。
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
@@ -188,9 +194,9 @@
                     </ul>
                 </div>
                 
-                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">审计、报税与合规</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
                         联合香港CPA注册会计师团队，提供年审、做账、零申报与核数服务。专业应对税务局抽查，规避离岸账户冻结风险，最大化享受香港低税率优势。
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
@@ -199,9 +205,9 @@
                     </ul>
                 </div>
 
-                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">专才工作签证代办</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
                         （与秘书公司业务深度交叉）利用香港公司雇主资质，为内地高管及核心技术人员办理输入内地人才计划（专才）。合法合规获批香港身份。
                     </p>
                     <ul class="text-sm text-gray-500 space-y-2">
@@ -215,7 +221,7 @@
         <!-- 身份规划业务 -->
         <div class="mb-20">
             <div class="flex items-center gap-4 mb-10 reveal">
-                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-gold/20 text-gold flex items-center justify-center">
                     <i data-lucide="passport" class="w-6 h-6"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-offwhite">人才引进与身份规划</h2>
@@ -225,26 +231,26 @@
                 <div class="glass p-10 rounded-3xl reveal flex flex-col justify-between">
                     <div>
                         <h3 class="text-2xl font-bold text-offwhite mb-4">高端人才通行证 (高才通)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
                             面向全球百强大学毕业生及年收入超250万港币的高净值人群。启航专攻A类（高薪人士）疑难杂症，通过完备的税务与分红审计，将获批率提升至98%。最快4周全家获批。
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">极速获批</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">高净值专属</span>
+                        <span class="px-3 py-1 bg-gold/5 border border-gold/20 rounded-full text-xs text-gray-500">极速获批</span>
+                        <span class="px-3 py-1 bg-gold/5 border border-gold/20 rounded-full text-xs text-gray-500">高净值专属</span>
                     </div>
                 </div>
 
                 <div class="glass p-10 rounded-3xl reveal delay-100 flex flex-col justify-between">
                     <div>
                         <h3 class="text-2xl font-bold text-offwhite mb-4">优秀人才入境计划 (优才)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
                             无须赴港前获得雇佣。启航资深文案团队深度挖掘客户在科技、金融、医疗等领域的成就，打造无懈可击的赴港计划书。并提供获批后的续签保本方案，助您顺利拿永居。
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">名额放开</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">低成本</span>
+                        <span class="px-3 py-1 bg-gold/5 border border-gold/20 rounded-full text-xs text-gray-500">名额放开</span>
+                        <span class="px-3 py-1 bg-gold/5 border border-gold/20 rounded-full text-xs text-gray-500">低成本</span>
                     </div>
                 </div>
             </div>
@@ -253,30 +259,30 @@
         <!-- 留学与进修 -->
         <div>
             <div class="flex items-center gap-4 mb-10 reveal">
-                <div class="w-12 h-12 rounded-xl bg-surface border border-white/10 text-gold flex items-center justify-center">
+                <div class="w-12 h-12 rounded-xl bg-surface border border-gold/20 text-gold flex items-center justify-center">
                     <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-offwhite">香港升学与进修移民</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass p-8 rounded-3xl reveal group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">进修移民 (IANG)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         大专及以上学历的首选。申请香港一年制硕士，毕业后无条件获发IANG签证。启航提供“选校-申请-面试-签证-租房-就业指导”全流程陪跑服务。
                     </p>
                 </div>
                 
-                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">香港八大本科/硕博直录</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         港大、港中文、港科大等世界百强名校申请。涵盖文书精修、教授套磁及全真面试模拟，大幅提升双非院校背景及低GPA学生的逆袭几率。
                     </p>
                 </div>
 
-                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-white/5 transition-all duration-500">
+                <div class="glass p-8 rounded-3xl reveal delay-200 group hover:bg-gold/5 transition-all duration-500">
                     <h3 class="text-xl font-bold text-gold mb-4">DSE与华侨生联考规划</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         结合香港身份规划，为子女铺设升学捷径。通过香港DSE考试直通全球名校，或利用华侨生身份，400分低分冲击内地985/211双一流学府。
                     </p>
                 </div>
@@ -286,7 +292,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 text-center text-gray-600 text-xs border-t border-white/5 mt-12 bg-black/50">
+    <footer class="py-12 text-center text-gray-600 text-xs border-t border-gold/10 mt-12 bg-surface/80">
         <p>&copy; 2024 QIHANG 启航新未来咨询. All rights reserved. Premium Dark Luxury Design.</p>
     </footer>
 

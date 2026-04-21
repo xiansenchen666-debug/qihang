@@ -30,8 +30,8 @@
     <style>
         /* Dark Luxury & Glassmorphism Base Styles */
         body {
-            background-color: #0A0A0A;
-            color: #E5E7EB;
+            background-color: #FDFBF7;
+            color: #5C5448;
             overflow-x: hidden;
             position: relative;
         }
@@ -55,7 +55,7 @@
             position: absolute;
             top: -10%; left: -10%;
             width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(197,160,89,0.15) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float1 25s infinite ease-in-out alternate;
@@ -64,7 +64,7 @@
             position: absolute;
             bottom: -20%; right: -10%;
             width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(30,58,138,0.1) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(200,205,210,0.4) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float2 30s infinite ease-in-out alternate;
@@ -80,18 +80,18 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(44, 36, 27, 0.05);
         }
 
         .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
         .reveal {
@@ -109,19 +109,19 @@
 
         .btn-gold {
             transition: all 0.3s ease;
-            border: 1px solid #D4AF37;
-            color: #0A0A0A;
-            background: linear-gradient(to right, transparent 50%, #D4AF37 50%);
+            border: 1px solid #C5A059;
+            color: #C5A059;
+            background: linear-gradient(to right, transparent 50%, #C5A059 50%);
             background-size: 200% 100%;
             background-position: left bottom;
         }
         .btn-gold:hover {
             background-position: right bottom;
-            color: #D4AF37;
+            color: #FDFBF7;
         }
 
         .page-header-bg {
-            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+            background-image: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.95)),
                               url('https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
@@ -142,7 +142,7 @@
             <i data-lucide="compass" class="text-gold w-8 h-8"></i>
             QIHANG
         </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-500">
             <a href="index.html" class="hover:text-gold transition-colors">首页</a>
             <a href="hongkong.html" class="hover:text-gold transition-colors">香港业务</a>
             <a href="cases.html" class="hover:text-gold transition-colors">卓越成就</a>
@@ -154,11 +154,11 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-white/10">
+    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-gold/20">
         <div class="max-w-4xl mx-auto text-center reveal active">
             <span class="text-gold font-bold tracking-widest text-sm uppercase mb-4 block">Brand Story</span>
             <h1 class="text-4xl md:text-6xl font-bold text-offwhite mb-6 leading-tight">重新定义全球化<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldlight">菁英教育与家族传承</span></h1>
-            <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+            <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto">
                 创立于伦敦，深耕于亚洲。启航新未来咨询由前常春藤招生官与华尔街高管联合创办，致力于为超高净值家庭提供跨越代际的全球身份与教育规划。
             </p>
         </div>
@@ -174,10 +174,10 @@
             <div class="reveal delay-100">
                 <i data-lucide="quote" class="w-12 h-12 text-gold mb-6 opacity-50"></i>
                 <h2 class="text-3xl font-bold text-offwhite mb-6">“教育不仅仅是获得学位，更是阶层跨越与家族视野的全球化延伸。”</h2>
-                <p class="text-gray-400 leading-relaxed mb-6 text-sm">
+                <p class="text-gray-500 leading-relaxed mb-6 text-sm">
                     十年前，我们在协助亚太地区家族办公室进行资产配置时发现，最令高净值人群焦虑的并非财富的增值，而是“子孙教育”与“国际身份”的割裂。传统的留学中介往往只看重单次的录取结果，而忽视了毕业后的就业落户与家族税务筹划。
                 </p>
-                <p class="text-gray-400 leading-relaxed mb-8 text-sm">
+                <p class="text-gray-500 leading-relaxed mb-8 text-sm">
                     因此，我们创立了 QIHANG。我们将投行的尽职调查标准引入教育与身份规划行业。每一位客户，都由包含前名校招生官、持牌移民律师、CPA注册会计师在内的“智囊团”提供多维度的顶层设计。
                 </p>
                 <div>
@@ -189,7 +189,7 @@
     </section>
 
     <!-- Global Presence -->
-    <section class="py-24 bg-surface/30 backdrop-blur-md border-y border-white/5 relative z-10">
+    <section class="py-24 bg-surface/50 backdrop-blur-md border-y border-gold/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-gold font-bold tracking-widest text-sm uppercase mb-3 block">Global Network</span>
@@ -197,22 +197,22 @@
                 <div class="w-16 h-1 bg-gold mx-auto rounded"></div>
             </div>
             <div class="grid md:grid-cols-4 gap-6">
-                <div class="glass p-8 rounded-2xl text-center reveal delay-100 hover:bg-white/5 transition-colors">
+                <div class="glass p-8 rounded-2xl text-center reveal delay-100 hover:bg-gold/5 transition-colors">
                     <i data-lucide="map-pin" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                     <h3 class="text-xl font-bold text-offwhite mb-2">Hong Kong</h3>
                     <p class="text-xs text-gray-500 uppercase">香港中环国际金融中心</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center reveal delay-200 hover:bg-white/5 transition-colors">
+                <div class="glass p-8 rounded-2xl text-center reveal delay-200 hover:bg-gold/5 transition-colors">
                     <i data-lucide="map-pin" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                     <h3 class="text-xl font-bold text-offwhite mb-2">Shenzhen</h3>
                     <p class="text-xs text-gray-500 uppercase">深圳南山平安金融中心</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center reveal delay-300 hover:bg-white/5 transition-colors">
+                <div class="glass p-8 rounded-2xl text-center reveal delay-300 hover:bg-gold/5 transition-colors">
                     <i data-lucide="map-pin" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                     <h3 class="text-xl font-bold text-offwhite mb-2">London</h3>
                     <p class="text-xs text-gray-500 uppercase">伦敦金丝雀码头</p>
                 </div>
-                <div class="glass p-8 rounded-2xl text-center reveal delay-100 hover:bg-white/5 transition-colors">
+                <div class="glass p-8 rounded-2xl text-center reveal delay-100 hover:bg-gold/5 transition-colors">
                     <i data-lucide="map-pin" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                     <h3 class="text-xl font-bold text-offwhite mb-2">Kuala Lumpur</h3>
                     <p class="text-xs text-gray-500 uppercase">吉隆坡双子塔</p>
@@ -222,7 +222,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 text-center text-gray-600 text-xs border-t border-white/5 mt-12 bg-black/50">
+    <footer class="py-12 text-center text-gray-600 text-xs border-t border-gold/10 mt-12 bg-surface/80">
         <div class="flex justify-center gap-6 mb-6">
             <i data-lucide="instagram" class="w-5 h-5 hover:text-gold cursor-pointer transition-colors"></i>
             <i data-lucide="linkedin" class="w-5 h-5 hover:text-gold cursor-pointer transition-colors"></i>

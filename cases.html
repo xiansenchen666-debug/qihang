@@ -16,11 +16,17 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#0A0A0A',
-                        surface: '#141414',
-                        gold: '#D4AF37',
-                        goldlight: '#F3E5AB',
-                        offwhite: '#F3F4F6'
+                        obsidian: '#FDFBF7',
+                        surface: '#FFFFFF',
+                        gold: '#C5A059',
+                        goldlight: '#E6D5B8',
+                        offwhite: '#2C241B',
+                        gray: {
+                            300: '#A39C93',
+                            400: '#8A8275',
+                            500: '#5C5448',
+                            600: '#453E34',
+                        }
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
@@ -33,8 +39,8 @@
     <style>
         /* Dark Luxury & Glassmorphism Base Styles */
         body {
-            background-color: #0A0A0A;
-            color: #E5E7EB;
+            background-color: #FDFBF7;
+            color: #5C5448;
             overflow-x: hidden;
             position: relative;
         }
@@ -60,7 +66,7 @@
             position: absolute;
             top: -10%; left: -10%;
             width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(197,160,89,0.15) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float1 25s infinite ease-in-out alternate;
@@ -69,7 +75,7 @@
             position: absolute;
             bottom: -20%; right: -10%;
             width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(30,58,138,0.1) 0%, rgba(10,10,10,0) 60%);
+            background: radial-gradient(circle, rgba(200,205,210,0.4) 0%, rgba(253,251,247,0) 60%);
             border-radius: 50%;
             filter: blur(80px);
             animation: float2 30s infinite ease-in-out alternate;
@@ -86,18 +92,18 @@
 
         /* 暗黑模式毛玻璃效果 */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(44, 36, 27, 0.05);
         }
 
         .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
         /* Framer Motion 风格的平滑 Reveal 动画 */
@@ -117,19 +123,19 @@
 
         .btn-gold {
             transition: all 0.3s ease;
-            border: 1px solid #D4AF37;
-            color: #0A0A0A;
-            background: linear-gradient(to right, transparent 50%, #D4AF37 50%);
+            border: 1px solid #C5A059;
+            color: #C5A059;
+            background: linear-gradient(to right, transparent 50%, #C5A059 50%);
             background-size: 200% 100%;
             background-position: right bottom;
         }
         .btn-gold:hover {
             background-position: left bottom;
-            color: #D4AF37;
+            color: #FDFBF7;
         }
 
         .page-header-bg {
-            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
+            background-image: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.95)),
                               url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
@@ -152,7 +158,7 @@
             <i data-lucide="compass" class="text-gold w-8 h-8"></i>
             QIHANG
         </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-500">
             <a href="index.html" class="hover:text-gold transition-colors">首页</a>
             <a href="hongkong.html" class="hover:text-gold transition-colors">香港业务</a>
             <a href="cases.html" class="text-gold border-b-2 border-gold pb-1">卓越成就</a>
@@ -164,11 +170,11 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-white/10">
+    <section class="page-header-bg pt-40 pb-20 px-6 border-b border-gold/20">
         <div class="max-w-4xl mx-auto text-center reveal active">
             <span class="text-gold font-bold tracking-widest text-sm uppercase mb-4 block">Success Stories</span>
             <h1 class="text-4xl md:text-6xl font-bold text-offwhite mb-6 leading-tight">数字背后的<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldlight">家族跨越与学术荣耀</span></h1>
-            <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+            <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto">
                 启航每年仅为全球200组高净值家庭提供私行级别的“教育+身份”双核驱动咨询。以下是部分具有里程碑意义的真实案例。
             </p>
         </div>
@@ -178,10 +184,10 @@
     <section class="py-24 px-6 max-w-7xl mx-auto relative z-10">
         
         <!-- Case 1 -->
-        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal flex flex-col md:flex-row gap-12 items-center group hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal flex flex-col md:flex-row gap-12 items-center group hover:bg-gold/5 transition-all duration-500 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-gold/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             <div class="md:w-1/3 relative">
-                <div class="w-32 h-32 bg-surface border border-white/10 text-gold rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">HKU</div>
+                <div class="w-32 h-32 bg-surface border border-gold/20 text-gold rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">HKU</div>
                 <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="HKU Campus" class="rounded-2xl shadow-lg relative z-10 opacity-90 group-hover:opacity-100 transition-opacity">
             </div>
             <div class="md:w-2/3">
@@ -191,21 +197,21 @@
                     <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4 text-gold"></i> Z同学</span>
                     <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4 text-gold"></i> 2023 Fall</span>
                 </div>
-                <p class="text-gray-400 leading-relaxed mb-6">
+                <p class="text-gray-500 leading-relaxed mb-6">
                     Z同学本科背景为普通双非财经院校，GPA仅有 3.2。启航的前招生官团队介入后，深度挖掘了其在本科期间参与的“普惠金融下沉市场调研”项目。通过重新构建 Personal Statement，将劣势转化为“扎根亚洲新兴市场的独特洞察力”。同时匹配了长达3个月的港大金融系教授全真模拟面试。最终不仅斩获 HKU 录取，更获得了半额奖学金。
                 </p>
-                <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                <div class="flex items-center gap-4 border-t border-gold/20 pt-6">
                     <div class="text-gold font-bold">录取院校：</div>
-                    <div class="text-gray-300">香港大学 (QS 26) / 香港中文大学</div>
+                    <div class="text-gray-500">香港大学 (QS 26) / 香港中文大学</div>
                 </div>
             </div>
         </div>
 
         <!-- Case 2 -->
-        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal delay-100 flex flex-col md:flex-row-reverse gap-12 items-center group hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] mb-16 reveal delay-100 flex flex-col md:flex-row-reverse gap-12 items-center group hover:bg-gold/5 transition-all duration-500 relative overflow-hidden">
             <div class="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-gold/10 to-transparent rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             <div class="md:w-1/3 relative">
-                <div class="w-32 h-32 bg-surface border border-white/10 text-gold rounded-full flex flex-col items-center justify-center font-bold text-lg shadow-xl absolute -top-6 -right-6 z-20 text-center leading-tight">高才通<br/>A类</div>
+                <div class="w-32 h-32 bg-surface border border-gold/20 text-gold rounded-full flex flex-col items-center justify-center font-bold text-lg shadow-xl absolute -top-6 -right-6 z-20 text-center leading-tight">高才通<br/>A类</div>
                 <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hong Kong Skyline" class="rounded-2xl shadow-lg relative z-10 opacity-90 group-hover:opacity-100 transition-opacity">
             </div>
             <div class="md:w-2/3">
@@ -215,21 +221,21 @@
                     <span class="flex items-center gap-1"><i data-lucide="briefcase" class="w-4 h-4 text-gold"></i> L总 (科技公司创始人)</span>
                     <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4 text-gold"></i> 仅用时 90 天</span>
                 </div>
-                <p class="text-gray-400 leading-relaxed mb-6">
+                <p class="text-gray-500 leading-relaxed mb-6">
                     L总国内企业年营收超千万，但由于复杂的股权结构，最初在自行申报时因“纳税证明不清晰”被入境处要求补件并面临拒签风险。启航的CPA团队与移民律师火速接手，重构了过去两年的个人所得税与企业分红的审计报告，精准踩中“高才通A类（年薪超250万港币）”的硬性门槛。在获批的同时，为其定制了VIE架构搭建建议，为后续企业在港交所IPO打下基石。
                 </p>
-                <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                <div class="flex items-center gap-4 border-t border-gold/20 pt-6">
                     <div class="text-gold font-bold">核心价值：</div>
-                    <div class="text-gray-300">全家香港身份落户 / 华侨生联考资格储备 / 离岸税务优化</div>
+                    <div class="text-gray-500">全家香港身份落户 / 华侨生联考资格储备 / 离岸税务优化</div>
                 </div>
             </div>
         </div>
 
         <!-- Case 3 -->
-        <div class="glass p-10 md:p-16 rounded-[2.5rem] reveal delay-200 flex flex-col md:flex-row gap-12 items-center group hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+        <div class="glass p-10 md:p-16 rounded-[2.5rem] reveal delay-200 flex flex-col md:flex-row gap-12 items-center group hover:bg-gold/5 transition-all duration-500 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-gold/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             <div class="md:w-1/3 relative">
-                <div class="w-32 h-32 bg-surface border border-white/10 text-gold rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">UM</div>
+                <div class="w-32 h-32 bg-surface border border-gold/20 text-gold rounded-full flex items-center justify-center font-bold text-3xl shadow-xl absolute -top-6 -left-6 z-20">UM</div>
                 <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Malaysia Campus" class="rounded-2xl shadow-lg relative z-10 opacity-90 group-hover:opacity-100 transition-opacity">
             </div>
             <div class="md:w-2/3">
@@ -239,12 +245,12 @@
                     <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4 text-gold"></i> W女士 (外企中层)</span>
                     <span class="flex items-center gap-1"><i data-lucide="target" class="w-4 h-4 text-gold"></i> QS排名 65</span>
                 </div>
-                <p class="text-gray-400 leading-relaxed mb-6">
+                <p class="text-gray-500 leading-relaxed mb-6">
                     35岁的W女士在跨国企业遭遇职业天花板，急需一个高含金量的博士学位作为晋升背书，但无法脱产离职。启航为其精准匹配了马来亚大学 (Universiti Malaya) 的高管博士(DBA)项目。通过长达半年的 Research Proposal (研究计划) 辅导，将她在企业的实战管理经验转化为高水准的学术课题，成功打动导师，实现“在职攻读+百强名校”的完美平衡。
                 </p>
-                <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                <div class="flex items-center gap-4 border-t border-gold/20 pt-6">
                     <div class="text-gold font-bold">录取院校：</div>
-                    <div class="text-gray-300">马来亚大学 (Universiti Malaya) / 诺丁汉大学马来西亚校区</div>
+                    <div class="text-gray-500">马来亚大学 (Universiti Malaya) / 诺丁汉大学马来西亚校区</div>
                 </div>
             </div>
         </div>
@@ -252,7 +258,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 text-center text-gray-600 text-xs border-t border-white/5 mt-12 bg-black/50">
+    <footer class="py-12 text-center text-gray-600 text-xs border-t border-gold/10 mt-12 bg-surface/80">
         <div class="flex justify-center gap-6 mb-6">
             <i data-lucide="instagram" class="w-5 h-5 hover:text-gold cursor-pointer transition-colors"></i>
             <i data-lucide="linkedin" class="w-5 h-5 hover:text-gold cursor-pointer transition-colors"></i>
