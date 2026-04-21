@@ -61,13 +61,31 @@ async function appendLog(message: string) {
  */
 async function serveStaticFile(req: Request): Promise<Response> {
   const url = new URL(req.url);
-  
-  // 默认首页
-  let filePath = url.pathname;
+  let pathname = url.pathname;
+
+  // 1. 强制无后缀路由：重定向 .html 结尾的请求到无后缀路径 (index.html 重定向到 /)
+  if (pathname.endsWith(".html")) {
+    const cleanPath = pathname === "/index.html" ? "/" : pathname.slice(0, -5);
+    return new Response(null, {
+      status: 301,
+      headers: { "Location": cleanPath }
+    });
+  }
+
+  // 2. 移除末尾的斜杠 (例如 /about/ -> /about)
+  if (pathname !== "/" && pathname.endsWith("/")) {
+    return new Response(null, {
+      status: 301,
+      headers: { "Location": pathname.slice(0, -1) }
+    });
+  }
+
+  // 3. 映射到本地文件路径
+  let filePath = pathname;
   if (filePath === "/" || filePath === "") {
     filePath = "/index.html";
   } else if (!filePath.includes(".")) {
-    // 如果请求路径没有扩展名（如 /about），默认尝试查找对应的 .html 文件
+    // 无后缀路由：追加 .html 以在文件系统中查找
     filePath += ".html";
   }
 
