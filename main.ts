@@ -41,6 +41,22 @@ const MIME_TYPES: Record<string, string> = {
 };
 
 /**
+ * 日志记录工具
+ * 将日志带上时间戳并追加到 server.log 文件中
+ */
+async function appendLog(message: string) {
+  const timestamp = new Date().toISOString();
+  const logEntry = `[${timestamp}] ${message}\n`;
+  try {
+    await Deno.writeTextFile("./server.log", logEntry, { append: true });
+    // 同时在控制台输出
+    console.log(`[${timestamp}] ${message}`);
+  } catch (error) {
+    console.error("Failed to write to log file:", error);
+  }
+}
+
+/**
  * 处理静态文件请求
  */
 async function serveStaticFile(req: Request): Promise<Response> {
@@ -90,21 +106,22 @@ async function handleConsultAPI(req: Request): Promise<Response> {
 
     // 基础验证
     if (!data.name || !data.phone) {
+      await appendLog(`[Error] Validation failed - Name: ${data.name}, Phone: ${data.phone}`);
       return new Response(JSON.stringify({ error: "姓名和电话是必填项" }), {
         status: 400,
         headers: { "Content-Type": "application/json" }
       });
     }
 
-    // 在实际生产环境中，此处可以集成发送邮件或存入数据库逻辑
-    console.log(`[New Consult Request] Name: ${data.name}, Phone: ${data.phone}, Target: ${data.targetCountry}, Intent: ${data.projectIntent}`);
+    // 记录到本地日志文件
+    await appendLog(`[New Consult Request] Name: ${data.name}, Phone: ${data.phone}, Target: ${data.targetCountry}, Intent: ${data.projectIntent}`);
 
     return new Response(JSON.stringify({ success: true, message: "Consultation received successfully." }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
   } catch (error) {
-    console.error("Error processing request:", error);
+    await appendLog(`[Error] processing request: ${error}`);
     return new Response(JSON.stringify({ error: "无效的请求数据格式" }), {
       status: 400,
       headers: { "Content-Type": "application/json" }
