@@ -29,8 +29,19 @@ const SECURITY_HEADERS = new Headers({
     "connect-src 'self';",
 });
 
+const MIME_TYPES: Record<string, string> = {
+  ".html": "text/html; charset=utf-8",
+  ".css": "text/css",
+  ".js": "application/javascript",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".svg": "image/svg+xml",
+  ".json": "application/json",
+  ".ico": "image/x-icon"
+};
+
 /**
- * 处理静态文件请求 (.html)
+ * 处理静态文件请求
  */
 async function serveStaticFile(req: Request): Promise<Response> {
   const url = new URL(req.url);
@@ -41,22 +52,28 @@ async function serveStaticFile(req: Request): Promise<Response> {
     filePath = "/index.html";
   }
 
-  // 限制仅允许访问根目录下的 .html 文件，增强安全性
-  if (filePath.endsWith(".html") && !filePath.includes("..")) {
-    try {
-      const file = await Deno.readFile("." + filePath);
-      const headers = new Headers(SECURITY_HEADERS);
-      headers.set("Content-Type", "text/html; charset=utf-8");
-      
-      return new Response(file, { status: 200, headers });
-    } catch (e) {
-      console.error(`Failed to read ${filePath}:`, e);
-      return new Response(`Internal Server Error - Missing ${filePath}`, { status: 404 });
-    }
+  // 防止路径遍历攻击
+  if (filePath.includes("..")) {
+    return new Response("Forbidden", { status: 403 });
   }
 
-  // 其他路径返回 404
-  return new Response("Not Found", { status: 404 });
+  try {
+    const file = await Deno.readFile("." + filePath);
+    const headers = new Headers(SECURITY_HEADERS);
+    
+    // 根据扩展名设置 Content-Type
+    const ext = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
+    const contentType = MIME_TYPES[ext] || "application/octet-stream";
+    headers.set("Content-Type", contentType);
+    
+    return new Response(file, { status: 200, headers });
+  } catch (e) {
+    if (e instanceof Deno.errors.NotFound) {
+      return new Response("Not Found", { status: 404 });
+    }
+    console.error(`Failed to read ${filePath}:`, e);
+    return new Response(`Internal Server Error`, { status: 500 });
+  }
 }
 
 /**

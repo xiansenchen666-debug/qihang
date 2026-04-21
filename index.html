@@ -413,13 +413,38 @@
             btn.innerText = '提交中...';
             btn.disabled = true;
             
-            // 模拟API请求
-            setTimeout(() => {
-                btn.innerText = '提交成功，我们会尽快联系您';
-                btn.classList.add('bg-green-500', 'text-white');
-                btn.classList.remove('btn-gold');
-                e.target.reset();
-            }, 1000);
+            const payload = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                targetCountry: document.getElementById('targetCountry').value,
+                projectIntent: document.getElementById('currentStage').value
+            };
+
+            try {
+                const response = await fetch('/api/consult', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    btn.innerText = '提交成功，我们会尽快联系您';
+                    btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                    btn.classList.remove('btn-gold');
+                    e.target.reset();
+                } else {
+                    throw new Error('提交失败');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                btn.innerText = '提交失败，请重试';
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 3000);
+            }
         });
     </script>
 </body>
