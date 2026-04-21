@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>启航：连接亚洲学术巅峰</title>
+    <!-- 引入无衬线英中双语字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#191970',
+                        champagne: '#F7E7CE',
+                        offwhite: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Minimalist Luxury & Glassmorphism Base Styles */
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-dark {
+            background: rgba(25, 25, 112, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(247, 231, 206, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 抽象纹理背景占位符样式 (可替换为维港/名校图层) */
+        .hero-bg {
+            background-image: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.7)),
+                              url('https://images.unsplash.com/photo-1583216515865-1d377b94d13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Framer Motion 风格的平滑 Reveal 动画 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 延时动画 */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        .btn-gold {
+            transition: all 0.3s ease;
+            border: 1px solid #F7E7CE;
+            color: #191970;
+            background: linear-gradient(to right, transparent 50%, #F7E7CE 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+        }
+        .btn-gold:hover {
+            background-position: right bottom;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-sans">
+
+    <!-- Transparent Sticky Navbar -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300 py-4 px-8 flex justify-between items-center" id="navbar">
+        <div class="text-midnight font-bold text-2xl tracking-widest uppercase flex items-center gap-2">
+            <i data-lucide="compass" class="text-champagne w-8 h-8"></i>
+            QIHANG
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-700">
+            <a href="#services" class="hover:text-midnight transition-colors">教育规划</a>
+            <a href="#identity" class="hover:text-midnight transition-colors">香港人才计划</a>
+            <a href="#about" class="hover:text-midnight transition-colors">关于我们</a>
+        </div>
+        <a href="#consult" class="px-6 py-2 btn-gold rounded-full font-medium text-sm hidden md:block">
+            免费咨询
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-4xl text-center reveal active">
+            <h1 class="text-5xl md:text-7xl font-bold text-midnight mb-6 leading-tight tracking-tight">
+                启航：定义你的<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-midnight to-blue-600">全球视野</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 tracking-widest uppercase font-light">
+                马来西亚留学 <span class="mx-3 text-champagne font-bold">|</span> 香港留学 <span class="mx-3 text-champagne font-bold">|</span> 香港身份定制
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="px-8 py-4 bg-midnight text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg flex items-center justify-center gap-2">
+                    探索规划 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Grid -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-3xl font-bold text-midnight mb-4">核心业务领域</h2>
+            <div class="w-16 h-1 bg-champagne mx-auto rounded"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- 板块 A (Malaysia) -->
+            <div class="glass p-10 rounded-3xl reveal delay-100 group hover:-translate-y-2 transition-transform duration-300">
+                <div class="w-14 h-14 rounded-full bg-midnight text-champagne flex items-center justify-center mb-6 shadow-md">
+                    <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-xl font-bold text-midnight mb-3">英美名校跳板</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">马来西亚双联课程，高性价比获取世界百强名校学位。优质的英文教学环境与稳健的升学路径。</p>
+                <div class="h-[1px] w-full bg-gradient-to-r from-champagne to-transparent group-hover:w-full transition-all"></div>
+            </div>
+
+            <!-- 板块 B (Hong Kong) -->
+            <div class="glass p-10 rounded-3xl reveal delay-200 group hover:-translate-y-2 transition-transform duration-300">
+                <div class="w-14 h-14 rounded-full bg-midnight text-champagne flex items-center justify-center mb-6 shadow-md">
+                    <i data-lucide="building-2" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-xl font-bold text-midnight mb-3">国际金融视野</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">专注香港八大名校申请，提供高端文书定制与面试辅导，助力接轨国际金融中心高端就业。</p>
+                <div class="h-[1px] w-full bg-gradient-to-r from-champagne to-transparent group-hover:w-full transition-all"></div>
+            </div>
+
+            <!-- 板块 C (HK Identity) -->
+            <div id="identity" class="glass p-10 rounded-3xl reveal delay-300 group hover:-translate-y-2 transition-transform duration-300">
+                <div class="w-14 h-14 rounded-full bg-midnight text-champagne flex items-center justify-center mb-6 shadow-md">
+                    <i data-lucide="passport" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-xl font-bold text-midnight mb-3">香港优才/高才计划</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">全方位身份配置规划，涵盖优才、高才及专才通道。为子女教育与家族资产全球化布局提供保障。</p>
+                <div class="h-[1px] w-full bg-gradient-to-r from-champagne to-transparent group-hover:w-full transition-all"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="py-24 bg-white/50 backdrop-blur-sm border-y border-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold text-midnight mb-4">极简三步规划</h2>
+                <div class="w-16 h-1 bg-champagne mx-auto rounded"></div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center relative reveal">
+                <!-- 连线 -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gray-200 -z-10"></div>
+                
+                <div class="flex flex-col items-center text-center bg-offwhite p-6 rounded-2xl shadow-sm mb-8 md:mb-0 z-10 w-64 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-champagne text-midnight flex items-center justify-center font-bold text-xl mb-4">1</div>
+                    <h4 class="font-bold text-midnight mb-2">深度评估</h4>
+                    <p class="text-xs text-gray-500">专业顾问 1v1 背景分析与方案定制</p>
+                </div>
+
+                <div class="flex flex-col items-center text-center bg-offwhite p-6 rounded-2xl shadow-sm mb-8 md:mb-0 z-10 w-64 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-midnight text-champagne flex items-center justify-center font-bold text-xl mb-4">2</div>
+                    <h4 class="font-bold text-midnight mb-2">精细化筹备</h4>
+                    <p class="text-xs text-gray-500">高端文书创作与材料深度包装</p>
+                </div>
+
+                <div class="flex flex-col items-center text-center bg-offwhite p-6 rounded-2xl shadow-sm z-10 w-64 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-champagne text-midnight flex items-center justify-center font-bold text-xl mb-4">3</div>
+                    <h4 class="font-bold text-midnight mb-2">递交与获批</h4>
+                    <p class="text-xs text-gray-500">全程跟进进度，面试辅导直至成功</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glass Form -->
+    <section id="consult" class="py-24 px-6 max-w-4xl mx-auto reveal">
+        <div class="glass-dark rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden">
+            <!-- 装饰性光晕 -->
+            <div class="absolute top-[-50%] left-[-10%] w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-[-50%] right-[-10%] w-96 h-96 bg-champagne/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="text-center mb-10 relative z-10">
+                <h2 class="text-3xl font-bold mb-3">开启高端定制之旅</h2>
+                <p class="text-gray-300 text-sm">留下您的联系方式，我们的资深规划师将在 24 小时内与您联系。</p>
+            </div>
+
+            <form id="consultForm" class="relative z-10 space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">您的姓名</label>
+                        <input type="text" id="name" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-champagne transition-colors" placeholder="e.g. 先生/女士">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">联系电话</label>
+                        <input type="tel" id="phone" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-champagne transition-colors" placeholder="您的手机号码">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">留学国家/地区</label>
+                        <select id="targetCountry" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-champagne transition-colors appearance-none cursor-pointer">
+                            <option value="马来西亚" class="text-midnight">马来西亚</option>
+                            <option value="香港" class="text-midnight">中国香港</option>
+                            <option value="英国" class="text-midnight">英国</option>
+                            <option value="其他" class="text-midnight">其他</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">落户意向</label>
+                        <select id="projectIntent" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-champagne transition-colors appearance-none cursor-pointer">
+                            <option value="香港优才" class="text-midnight">香港优才计划</option>
+                            <option value="香港高才" class="text-midnight">香港高才通计划</option>
+                            <option value="香港进修" class="text-midnight">香港留学进修落户</option>
+                            <option value="暂无落户需求" class="text-midnight">仅留学，暂无落户需求</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-8 py-4 bg-champagne text-midnight font-bold rounded-xl hover:bg-white transition-colors shadow-lg shadow-champagne/20 flex items-center justify-center gap-2">
+                    提交咨询 <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+            <div id="formSuccess" class="hidden text-center text-champagne mt-6 text-sm">
+                提交成功！规划师将尽快与您取得联系。
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-400 text-xs border-t border-gray-200 mt-12">
+        <p>&copy; 2024 QIHANG 启航新未来咨询. All rights reserved. Minimalist Luxury Design.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll Reveal Animation with IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => {
+            // Hero section default active
+            if(!el.classList.contains('active')){
+                revealObserver.observe(el);
+            }
+        });
+
+        // Form Submission Logic
+        document.getElementById('consultForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const data = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                targetCountry: document.getElementById('targetCountry').value,
+                projectIntent: document.getElementById('projectIntent').value
+            };
+
+            try {
+                const response = await fetch('/api/consult', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if(response.ok) {
+                    document.getElementById('consultForm').reset();
+                    document.getElementById('formSuccess').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('formSuccess').classList.add('hidden');
+                    }, 5000);
+                } else {
+                    alert('提交失败，请稍后再试。');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('网络错误，请稍后再试。');
+            }
+        });
+    </script>
+</body>
+</html>
