@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港身份尊享计划 | 启航新未来</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#FDFBF7',
+                        surface: '#FFFFFF',
+                        gold: '#C5A059',
+                        goldlight: '#E6D5B8',
+                        offwhite: '#2C241B',
+                        gray: {
+                            300: '#A39C93',
+                            400: '#8A8275',
+                            500: '#5C5448',
+                            600: '#453E34',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 已同步项目现有 CSS 变量与设计规范：--obsidian, --surface, --gold, --goldlight, --offwhite */
+        body {
+            background-color: #FDFBF7;
+            color: #5C5448;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .noise-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .poster-bg {
+            background-image: linear-gradient(to bottom, rgba(253, 251, 247, 0.95), rgba(253, 251, 247, 0.98)),
+                              url('https://images.unsplash.com/photo-1541086095944-f4b508361087?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 16px 40px 0 rgba(44, 36, 27, 0.05);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s cubic-bezier(0.5, 0, 0, 1) forwards;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #C5A059, #8A6E3B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-sans flex items-center justify-center py-10 bg-gray-100">
+    
+    <!-- H5 Poster Container -->
+    <div class="relative w-full max-w-md mx-auto bg-[#FDFBF7] shadow-2xl rounded-3xl overflow-hidden poster-bg">
+        <div class="noise-overlay"></div>
+        
+        <!-- Header / Logo -->
+        <div class="pt-10 pb-6 px-8 text-center reveal relative z-10">
+            <div class="inline-flex items-center justify-center gap-2 mb-2">
+                <i data-lucide="compass" class="text-gold w-6 h-6"></i>
+                <span class="text-[#2C241B] font-bold text-lg tracking-widest uppercase">启航新未来</span>
+            </div>
+            <p class="text-[10px] text-gold tracking-[0.3em] uppercase">Qihang New Future</p>
+        </div>
+
+        <!-- Main Hook -->
+        <div class="px-8 text-center reveal delay-100 relative z-10">
+            <h1 class="text-4xl font-black text-[#2C241B] leading-tight mb-2">
+                香港身份<br/><span class="gradient-text">尊享定制计划</span>
+            </h1>
+            <div class="w-12 h-1 bg-gold mx-auto rounded mb-6"></div>
+        </div>
+
+        <!-- Pricing Core -->
+        <div class="px-6 mb-8 reveal delay-200 relative z-10">
+            <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-t-gold">
+                <p class="text-xs text-[#5C5448] font-bold tracking-widest uppercase mb-2">限时臻选方案</p>
+                <div class="flex items-end justify-center gap-1 mb-2">
+                    <span class="text-xl font-bold text-gold">￥</span>
+                    <span class="text-5xl font-black text-[#2C241B] leading-none">10,000</span>
+                </div>
+                <p class="text-sm text-[#4A443B] font-medium mb-4">全包获取香港特区身份证</p>
+                
+                <div class="w-full h-px bg-gold/20 my-4"></div>
+                
+                <div class="flex items-center justify-center gap-2 text-sm">
+                    <span class="bg-gold/10 text-gold px-2 py-1 rounded text-xs font-bold">+ ￥30,000</span>
+                    <span class="text-[#5C5448]">尊享 7年无忧续签及永居托管</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="px-6 grid grid-cols-3 gap-3 mb-8 reveal delay-300 relative z-10">
+            <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                <div class="text-gold mb-1 flex justify-center"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                <div class="text-lg font-bold text-[#2C241B]">2个月</div>
+                <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">极速申请周期</div>
+            </div>
+            <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                <div class="text-gold mb-1 flex justify-center"><i data-lucide="award" class="w-5 h-5"></i></div>
+                <div class="text-lg font-bold text-[#2C241B]">100%</div>
+                <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">获批成功率</div>
+            </div>
+            <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                <div class="text-gold mb-1 flex justify-center"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                <div class="text-lg font-bold text-[#2C241B]">3周</div>
+                <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">最快获批记录</div>
+            </div>
+        </div>
+
+        <!-- Benefits List -->
+        <div class="px-8 mb-10 reveal delay-400 relative z-10">
+            <h3 class="text-sm font-bold text-[#2C241B] tracking-widest uppercase mb-5 flex items-center gap-2">
+                <i data-lucide="gem" class="w-4 h-4 text-gold"></i>
+                不可替代的身份红利
+            </h3>
+            <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                    <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i></div>
+                    <div>
+                        <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">菁英教育捷径</h4>
+                        <p class="text-xs text-[#5C5448] leading-relaxed">子女尊享华侨生联考，400分直通国内985/211名校，无缝衔接海外藤校。</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="landmark" class="w-3.5 h-3.5"></i></div>
+                    <div>
+                        <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">全球税务天堂</h4>
+                        <p class="text-xs text-[#5C5448] leading-relaxed">超低个税，无遗产税、资本增值税，完美实现家族资产保值增值。</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="globe" class="w-3.5 h-3.5"></i></div>
+                    <div>
+                        <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">世界公民特权</h4>
+                        <p class="text-xs text-[#5C5448] leading-relaxed">特区护照免签全球 171 个国家及地区，大湾区核心枢纽，畅行无阻。</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer CTA -->
+        <div class="bg-[#2C241B] text-center py-8 px-6 relative z-10 mt-auto">
+            <p class="text-gold font-bold text-lg mb-1 tracking-widest">扫描或长按开启定制</p>
+            <p class="text-[#FDFBF7]/60 text-xs mb-6">前入境处专家团队 · 资深律师保驾护航</p>
+            
+            <!-- QR Code Placeholder -->
+            <div class="w-24 h-24 bg-white p-2 rounded-xl mx-auto mb-4 flex items-center justify-center shadow-lg">
+                <i data-lucide="qr-code" class="w-16 h-16 text-[#2C241B]"></i>
+            </div>
+            
+            <p class="text-[10px] text-[#FDFBF7]/40 uppercase tracking-widest">Premium Immigration Consulting</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
