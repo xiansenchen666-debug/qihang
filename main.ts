@@ -22,7 +22,7 @@ const SECURITY_HEADERS = new Headers({
   // 内容安全策略 (CSP) 允许 Tailwind CDN, Lucide Icons, Google Fonts 等必需资源
   "Content-Security-Policy": 
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://html2canvas.hertzen.com; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com data:; " +
     "img-src 'self' data: https://images.unsplash.com; " +

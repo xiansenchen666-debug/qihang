@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港身份尊享计划 | 启航新未来</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#FDFBF7',
+                        surface: '#FFFFFF',
+                        gold: '#C5A059',
+                        goldlight: '#E6D5B8',
+                        offwhite: '#2C241B',
+                        gray: {
+                            300: '#A39C93',
+                            400: '#8A8275',
+                            500: '#5C5448',
+                            600: '#453E34',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 已同步项目现有 CSS 变量与设计规范：--obsidian, --surface, --gold, --goldlight, --offwhite */
+        body {
+            background-color: #FDFBF7;
+            color: #5C5448;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 导航栏样式 */
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+        }
+        .btn-gold {
+            transition: all 0.3s ease;
+            border: 1px solid #C5A059;
+            color: #C5A059;
+            background: linear-gradient(to right, transparent 50%, #C5A059 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+        }
+        .btn-gold:hover {
+            background-position: right bottom;
+            color: #FDFBF7;
+        }
+
+        .noise-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .poster-bg {
+            background-image: linear-gradient(to bottom, rgba(253, 251, 247, 0.95), rgba(253, 251, 247, 0.98)),
+                              url('https://images.unsplash.com/photo-1541086095944-f4b508361087?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 16px 40px 0 rgba(44, 36, 27, 0.05);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s cubic-bezier(0.5, 0, 0, 1) forwards;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #C5A059, #8A6E3B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen font-sans bg-[#FDFBF7]">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4 px-8 flex justify-between items-center" id="navbar" data-html2canvas-ignore>
+        <a href="/" class="text-[#2C241B] font-bold text-2xl tracking-widest uppercase flex items-center gap-2">
+            <i data-lucide="compass" class="text-gold w-8 h-8"></i>
+            启航新未来
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-[#5C5448] items-center">
+            <a href="/" class="hover:text-gold transition-colors">首页</a>
+            
+            <!-- 香港业务 Dropdown -->
+            <div class="relative group py-4 -my-4">
+                <a href="/hongkong" class="text-gold border-b-2 border-gold pb-1 flex items-center gap-1">
+                    香港业务
+                    <i data-lucide="chevron-down" class="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 bg-white/95 backdrop-blur-md border border-gold/20 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
+                    <a href="/hongkong" class="px-5 py-3 hover:bg-gold/10 hover:text-gold transition-colors text-sm border-b border-gold/10">香港核心业务</a>
+                    <a href="/hk-premium" class="px-5 py-3 text-gold bg-gold/5 transition-colors text-sm">香港身份尊享计划</a>
+                </div>
+            </div>
+
+            <a href="/cases" class="hover:text-gold transition-colors">卓越成就</a>
+            <a href="/about" class="hover:text-gold transition-colors">关于我们</a>
+        </div>
+        <a href="/#consult" class="px-6 py-2 btn-gold rounded-full font-medium text-sm hidden md:block">
+            免费咨询
+        </a>
+    </nav>
+
+    <!-- 悬浮下载按钮 (仅在网页中显示，截图中不包含) -->
+    <div class="fixed bottom-6 right-6 z-50" data-html2canvas-ignore>
+        <button onclick="downloadPoster()" class="bg-gold text-white px-6 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-[#8A6E3B] transition-colors">
+            <i data-lucide="download" class="w-5 h-5"></i>
+            下载高清海报
+        </button>
+    </div>
+
+    <div class="pt-24 pb-12">
+        <!-- H5 Poster Container -->
+        <div id="poster-container" class="relative w-[375px] mx-auto bg-[#FDFBF7] shadow-2xl overflow-hidden poster-bg min-h-[812px] flex flex-col">
+            <div class="noise-overlay"></div>
+            
+            <!-- Header / Logo -->
+            <div class="pt-10 pb-6 px-8 text-center reveal relative z-10">
+                <div class="inline-flex items-center justify-center gap-2 mb-2">
+                    <i data-lucide="compass" class="text-gold w-6 h-6"></i>
+                    <span class="text-[#2C241B] font-bold text-lg tracking-widest uppercase">启航新未来</span>
+                </div>
+                <p class="text-[10px] text-gold tracking-[0.3em] uppercase">Qihang New Future</p>
+            </div>
+
+            <!-- Main Hook -->
+            <div class="px-8 text-center reveal delay-100 relative z-10">
+                <h1 class="text-4xl font-black text-[#2C241B] leading-tight mb-2">
+                    香港身份<br/><span class="gradient-text">尊享定制计划</span>
+                </h1>
+                <div class="w-12 h-1 bg-gold mx-auto rounded mb-6"></div>
+            </div>
+
+            <!-- Pricing Core -->
+            <div class="px-6 mb-8 reveal delay-200 relative z-10">
+                <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-t-gold">
+                    <p class="text-xs text-[#5C5448] font-bold tracking-widest uppercase mb-2">限时臻选方案</p>
+                    <div class="flex items-end justify-center gap-1 mb-2">
+                        <span class="text-xl font-bold text-gold">￥</span>
+                        <span class="text-5xl font-black text-[#2C241B] leading-none">10,000</span>
+                    </div>
+                    <p class="text-sm text-[#4A443B] font-medium mb-4">全包获取香港特区身份证</p>
+                    
+                    <div class="w-full h-px bg-gold/20 my-4"></div>
+                    
+                    <div class="flex items-center justify-center gap-2 text-sm">
+                        <span class="bg-gold/10 text-gold px-2 py-1 rounded text-xs font-bold">+ ￥30,000</span>
+                        <span class="text-[#5C5448]">尊享 7年无忧续签及永居托管</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Target Audience Banner -->
+            <div class="px-6 mb-4 reveal delay-300 relative z-10">
+                <div class="bg-[#2C241B] rounded-xl p-3 text-center border border-gold/40 shadow-lg">
+                    <div class="flex items-center justify-center gap-1.5 mb-1">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-gold"></i>
+                        <span class="text-sm text-gold font-bold tracking-widest">仅限 QS 前 100 名校毕业生</span>
+                    </div>
+                    <p class="text-[10px] text-[#FDFBF7]/70">本计划为百强名校精英专属定制，非该范围暂不接单</p>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="px-6 grid grid-cols-3 gap-3 mb-6 reveal delay-300 relative z-10">
+                <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                    <div class="text-gold mb-1 flex justify-center"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                    <div class="text-lg font-bold text-[#2C241B]">2个月</div>
+                    <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">极速申请周期</div>
+                </div>
+                <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                    <div class="text-gold mb-1 flex justify-center"><i data-lucide="award" class="w-5 h-5"></i></div>
+                    <div class="text-lg font-bold text-[#2C241B]">100%</div>
+                    <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">专属获批率</div>
+                </div>
+                <div class="bg-white/60 backdrop-blur rounded-xl p-4 text-center border border-gold/10">
+                    <div class="text-gold mb-1 flex justify-center"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                    <div class="text-lg font-bold text-[#2C241B]">3周</div>
+                    <div class="text-[10px] text-[#5C5448] uppercase tracking-wider mt-1">最快获批记录</div>
+                </div>
+            </div>
+
+            <!-- Benefits List -->
+            <div class="px-8 mb-10 reveal delay-400 relative z-10">
+                <h3 class="text-sm font-bold text-[#2C241B] tracking-widest uppercase mb-5 flex items-center gap-2">
+                    <i data-lucide="gem" class="w-4 h-4 text-gold"></i>
+                    不可替代的身份红利
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i></div>
+                        <div>
+                            <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">菁英教育捷径</h4>
+                            <p class="text-xs text-[#5C5448] leading-relaxed">子女尊享华侨生联考，400分直通国内985/211名校，无缝衔接海外藤校。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="landmark" class="w-3.5 h-3.5"></i></div>
+                        <div>
+                            <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">全球税务天堂</h4>
+                            <p class="text-xs text-[#5C5448] leading-relaxed">超低个税，无遗产税、资本增值税，完美实现家族资产保值增值。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 bg-gold/10 p-1 rounded-full text-gold"><i data-lucide="globe" class="w-3.5 h-3.5"></i></div>
+                        <div>
+                            <h4 class="text-[#2C241B] font-bold text-sm mb-0.5">世界公民特权</h4>
+                            <p class="text-xs text-[#5C5448] leading-relaxed">特区护照免签全球 171 个国家及地区，大湾区核心枢纽，畅行无阻。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Footer CTA -->
+            <div class="bg-[#2C241B] text-center py-8 px-6 relative z-10 mt-auto">
+                <p class="text-gold font-bold text-lg mb-1 tracking-widest">添加微信 开启专属定制</p>
+                <p class="text-[#FDFBF7]/60 text-xs mb-6">前入境处专家团队 · 资深律师保驾护航</p>
+                
+                <!-- WeChat Contact -->
+                <div class="bg-white/10 backdrop-blur-sm border border-gold/30 p-3 rounded-xl mx-auto mb-4 inline-block">
+                    <p class="text-gold font-medium text-lg tracking-wider">微信: <span class="font-bold">15660075902</span></p>
+                </div>
+                
+                <p class="text-[10px] text-[#FDFBF7]/40 uppercase tracking-widest">Premium Immigration Consulting</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-[#4A443B] text-xs border-t border-gold/10 mt-12 bg-white/80" data-html2canvas-ignore>
+        <p>&copy; 2024 启航新未来咨询. All rights reserved. Premium Dark Luxury Design.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 高清海报下载功能
+        function downloadPoster() {
+            const container = document.getElementById('poster-container');
+            const btn = document.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            // 按钮状态：生成中
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 生成中...';
+            lucide.createIcons();
+            
+            // 确保动画加载完成再截图
+            setTimeout(() => {
+                html2canvas(container, {
+                    scale: 3, // 提高3倍分辨率，解决不清晰的问题
+                    useCORS: true, // 允许跨域加载图片（背景图等）
+                    backgroundColor: '#FDFBF7', // 确保背景颜色正确
+                    width: container.offsetWidth,
+                    height: container.offsetHeight,
+                }).then(canvas => {
+                    // 恢复按钮状态
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                    
+                    // 触发下载
+                    const link = document.createElement('a');
+                    link.download = '香港身份尊享定制计划-高清海报.png';
+                    link.href = canvas.toDataURL('image/png', 1.0);
+                    link.click();
+                }).catch(err => {
+                    console.error('海报生成失败', err);
+                    alert('海报生成失败，请稍后重试');
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                });
+            }, 500); // 等待入场动画执行完毕
+        }
+    </script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>

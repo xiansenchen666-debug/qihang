@@ -180,9 +180,21 @@
             <i data-lucide="compass" class="text-gold w-8 h-8"></i>
             启航新未来
         </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-[#5C5448]">
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-[#5C5448] items-center">
             <a href="/" class="text-gold border-b-2 border-gold pb-1">首页</a>
-            <a href="/hongkong" class="hover:text-gold transition-colors">香港业务</a>
+            
+            <!-- 香港业务 Dropdown -->
+            <div class="relative group py-4 -my-4">
+                <a href="/hongkong" class="hover:text-gold transition-colors flex items-center gap-1">
+                    香港业务
+                    <i data-lucide="chevron-down" class="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 bg-white/95 backdrop-blur-md border border-gold/20 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
+                    <a href="/hongkong" class="px-5 py-3 hover:bg-gold/10 hover:text-gold transition-colors text-sm border-b border-gold/10">香港核心业务</a>
+                    <a href="/hk-premium" class="px-5 py-3 hover:bg-gold/10 hover:text-gold transition-colors text-sm">香港身份尊享计划</a>
+                </div>
+            </div>
+
             <a href="/cases" class="hover:text-gold transition-colors">卓越成就</a>
             <a href="/about" class="hover:text-gold transition-colors">关于我们</a>
         </div>
