@@ -180,9 +180,21 @@
             <i data-lucide="compass" class="text-gold w-8 h-8"></i>
             启航新未来
         </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-[#5C5448]">
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-[#5C5448] items-center">
             <a href="/" class="text-gold border-b-2 border-gold pb-1">首页</a>
-            <a href="/hongkong" class="hover:text-gold transition-colors">香港业务</a>
+            
+            <!-- 香港业务 Dropdown -->
+            <div class="relative group py-4 -my-4">
+                <a href="/hongkong" class="hover:text-gold transition-colors flex items-center gap-1">
+                    香港业务
+                    <i data-lucide="chevron-down" class="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 bg-white/95 backdrop-blur-md border border-gold/20 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
+                    <a href="/hongkong" class="px-5 py-3 hover:bg-gold/10 hover:text-gold transition-colors text-sm border-b border-gold/10">香港核心业务</a>
+                    <a href="/hk-premium" class="px-5 py-3 hover:bg-gold/10 hover:text-gold transition-colors text-sm">香港身份尊享计划</a>
+                </div>
+            </div>
+
             <a href="/cases" class="hover:text-gold transition-colors">卓越成就</a>
             <a href="/about" class="hover:text-gold transition-colors">关于我们</a>
         </div>
@@ -276,9 +288,9 @@
             <div id="identity" class="glass p-8 rounded-3xl reveal delay-100 group hover:bg-gold/5 transition-all duration-500 md:col-span-1 lg:col-span-2 flex flex-col justify-between">
                 <div>
                     <div class="w-14 h-14 rounded-2xl bg-white border border-gold/20 text-gold flex items-center justify-center mb-6">
-                        <i data-lucide="passport" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-[#2C241B] mb-3">香港身份定制规划</h3>
+                    <i data-lucide="id-card" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-[#2C241B] mb-3">香港身份定制规划</h3>
                     <p class="text-[#5C5448] text-sm leading-relaxed mb-6">专为高净值人群打造。涵盖高才通、优才及专才计划，CPA与持牌律师双重护航，实现资产全球配置与子女华侨生联考优势。</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-4">
